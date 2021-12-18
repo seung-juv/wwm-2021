@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 import ScrollTrigger from "../components/ScrollTrigger";
 import useMount from "../hooks/useMount";
 
-const Container = styled.div`
+const Container = styled.main`
   padding-bottom: 5rem;
 `;
 
@@ -419,11 +419,11 @@ function Home(): React.ReactElement {
                 y: -150,
               }}
             >
-              <Link to="/">
-                <MoreButton>
+              <MoreButton>
+                <Link to="/top10">
                   <img src="/images/button_text.png" alt="보러가기" />
-                </MoreButton>
-              </Link>
+                </Link>
+              </MoreButton>
             </ScrollTrigger>
           </MainTextContainer>
         </Inner>
