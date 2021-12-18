@@ -81,9 +81,34 @@ const MainText3 = styled.p`
   font-weight: 400;
 `;
 
-const MainMore = styled.div`
+const MoreButton = styled.button`
   margin-top: 6rem;
-  display: inline-block;
+  background-color: #cccccc;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  img {
+    position: relative;
+    z-index: 3;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: -100%;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    background-color: #00f55f;
+    z-index: 0;
+    transition: 0.5s left ease;
+  }
+  &:hover {
+    &::after {
+      left: 0;
+    }
+  }
 `;
 
 const SectionTitle = styled.h3`
@@ -148,7 +173,9 @@ const Section2Slide = styled.div`
   }
 `;
 
-const Section2More = styled.div``;
+const Section2MoreButton = styled(MoreButton)`
+  margin-top: 0;
+`;
 
 const Section3 = styled.div`
   padding: 10rem 0 15rem;
@@ -373,11 +400,11 @@ function Home(): React.ReactElement {
                 y: -150,
               }}
             >
-              <MainMore>
-                <Link to="/">
-                  <img src="/images/view_button.png" alt="보러가기" />
-                </Link>
-              </MainMore>
+              <Link to="/">
+                <MoreButton>
+                  <img src="/images/button_text.png" alt="보러가기" />
+                </MoreButton>
+              </Link>
             </ScrollTrigger>
           </MainTextContainer>
         </Inner>
@@ -457,30 +484,31 @@ function Home(): React.ReactElement {
               ))}
             </Section2Slider>
           </Section2SliderWrapper>
-          <Section2More>
-            <Link to="/">
-              <ScrollTrigger
-                enterFromOptions={{
-                  opacity: 0,
-                  y: 150,
-                }}
-                enterToOptions={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                leaveFromOptions={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                leaveToOptions={{
-                  opacity: 0,
-                  y: -150,
-                }}
-              >
-                <img src="/images/view_button.png" alt="보러가기" />
-              </ScrollTrigger>
-            </Link>
-          </Section2More>
+
+          <ScrollTrigger
+            enterFromOptions={{
+              opacity: 0,
+              y: 150,
+            }}
+            enterToOptions={{
+              opacity: 1,
+              y: 0,
+            }}
+            leaveFromOptions={{
+              opacity: 1,
+              y: 0,
+            }}
+            leaveToOptions={{
+              opacity: 0,
+              y: -150,
+            }}
+          >
+            <Section2MoreButton>
+              <Link to="/">
+                <img src="/images/button_text.png" alt="보러가기" />
+              </Link>
+            </Section2MoreButton>
+          </ScrollTrigger>
         </Inner>
       </Section2>
       <Section3>
