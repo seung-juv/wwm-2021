@@ -337,6 +337,7 @@ function Home(): React.ReactElement {
                 y: 150,
               }}
               enterToOptions={{
+                delay: 2,
                 opacity: 1,
                 y: 0,
               }}
@@ -357,6 +358,7 @@ function Home(): React.ReactElement {
                 y: 150,
               }}
               enterToOptions={{
+                delay: 2.2,
                 opacity: 1,
                 y: 0,
               }}
@@ -377,6 +379,7 @@ function Home(): React.ReactElement {
                 y: 150,
               }}
               enterToOptions={{
+                delay: 2.4,
                 opacity: 1,
                 y: 0,
               }}
@@ -400,6 +403,7 @@ function Home(): React.ReactElement {
                 y: 150,
               }}
               enterToOptions={{
+                delay: 2.6,
                 opacity: 1,
                 y: 0,
               }}
