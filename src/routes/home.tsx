@@ -1,9 +1,11 @@
 import React from "react";
+import gsap from "gsap";
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
 import { keyframes } from "@emotion/react";
 import Footer from "../components/Footer";
 import ScrollTrigger from "../components/ScrollTrigger";
+import useMount from "../hooks/useMount";
 
 const Container = styled.div`
   padding-bottom: 5rem;
@@ -41,8 +43,10 @@ const MainUniverse = styled.div`
 
 const MainTop10 = styled.div`
   margin-bottom: 18rem;
+  height: 33rem;
   img {
     display: block;
+    position: relative;
     &:not(:last-child) {
       margin-bottom: 1.5rem;
     }
@@ -151,6 +155,30 @@ const Section3Banner = styled.img`
 `;
 
 function Home(): React.ReactElement {
+  const mount = useMount();
+  const top10Ref = React.useRef<{ stroke: HTMLImageElement | null; fill: HTMLImageElement | null }>(
+    {
+      stroke: null,
+      fill: null,
+    }
+  );
+  const timeline = React.useMemo(() => gsap.timeline(), []);
+
+  React.useEffect(() => {
+    if (mount) {
+      timeline
+        .to(top10Ref.current.fill, { opacity: 0, duration: 0.001 })
+        .to(top10Ref.current.stroke, { opacity: 0, duration: 0 })
+        .to(top10Ref.current.stroke, { opacity: 1, delay: 2, duration: 0.001 })
+        .to(top10Ref.current.stroke, { opacity: 0, delay: 0.5, duration: 0.001 })
+        .to(top10Ref.current.stroke, { top: 115, opacity: 1, delay: 0.75, duration: 0.001 })
+        .to(top10Ref.current.stroke, { opacity: 0, delay: 0.5, duration: 0.001 })
+        .to(top10Ref.current.stroke, { top: 230, opacity: 1, delay: 0.75, duration: 0.001 })
+        .to(top10Ref.current.stroke, { opacity: 0, delay: 0.5, duration: 0.001 })
+        .to(top10Ref.current.fill, { top: 115, opacity: 1, delay: 0.75, duration: 0.001 });
+    }
+  }, [mount]);
+
   return (
     <Container>
       <Section1>
@@ -165,14 +193,6 @@ function Home(): React.ReactElement {
                 autoAlpha: 1,
                 y: 0,
               }}
-              leaveFromOptions={{
-                autoAlpha: 1,
-                y: 0,
-              }}
-              leaveToOptions={{
-                autoAlpha: 0,
-                y: -150,
-              }}
             >
               <img src="/images/main_wma.png" alt="wma" />
             </ScrollTrigger>
@@ -182,17 +202,8 @@ function Home(): React.ReactElement {
                 y: 150,
               }}
               enterToOptions={{
-                delay: 0.1,
                 autoAlpha: 1,
                 y: 0,
-              }}
-              leaveFromOptions={{
-                autoAlpha: 1,
-                y: 0,
-              }}
-              leaveToOptions={{
-                autoAlpha: 0,
-                y: -150,
               }}
             >
               <img src="/images/main_2021.png" alt="2021" />
@@ -203,17 +214,8 @@ function Home(): React.ReactElement {
                 y: 150,
               }}
               enterToOptions={{
-                delay: 0.2,
                 autoAlpha: 1,
                 y: 0,
-              }}
-              leaveFromOptions={{
-                autoAlpha: 1,
-                y: 0,
-              }}
-              leaveToOptions={{
-                autoAlpha: 0,
-                y: -150,
               }}
             >
               <img src="/images/main_web_web_mo_awards.png" alt="WEB WEB MO AWARDS" />
@@ -225,17 +227,9 @@ function Home(): React.ReactElement {
               y: 150,
             }}
             enterToOptions={{
-              delay: 0.5,
+              delay: 0.1,
               autoAlpha: 1,
               y: 0,
-            }}
-            leaveFromOptions={{
-              autoAlpha: 1,
-              y: 0,
-            }}
-            leaveToOptions={{
-              autoAlpha: 0,
-              y: -150,
             }}
           >
             <MainDate>
@@ -248,17 +242,9 @@ function Home(): React.ReactElement {
               y: 150,
             }}
             enterToOptions={{
-              delay: 0.6,
+              delay: 0.2,
               autoAlpha: 1,
               y: 0,
-            }}
-            leaveFromOptions={{
-              autoAlpha: 1,
-              y: 0,
-            }}
-            leaveToOptions={{
-              autoAlpha: 0,
-              y: -150,
             }}
           >
             <MainUniverse>
@@ -266,69 +252,20 @@ function Home(): React.ReactElement {
             </MainUniverse>
           </ScrollTrigger>
           <MainTop10>
-            <ScrollTrigger
-              enterFromOptions={{
-                autoAlpha: 0,
-                y: 150,
+            <img
+              ref={(ref) => {
+                top10Ref.current.stroke = ref;
               }}
-              enterToOptions={{
-                delay: 1.2,
-                autoAlpha: 1,
-                y: 0,
+              src="/images/main_top10_stroke.png"
+              alt="TOP 10 !"
+            />
+            <img
+              ref={(ref) => {
+                top10Ref.current.fill = ref;
               }}
-              leaveFromOptions={{
-                autoAlpha: 1,
-                y: 0,
-              }}
-              leaveToOptions={{
-                autoAlpha: 0,
-                y: -150,
-              }}
-            >
-              <img src="/images/main_top10_stroke.png" alt="TOP 10 !" />
-            </ScrollTrigger>
-            <ScrollTrigger
-              enterFromOptions={{
-                autoAlpha: 0,
-                y: 150,
-              }}
-              enterToOptions={{
-                delay: 1.4,
-                autoAlpha: 1,
-                y: 0,
-              }}
-              leaveFromOptions={{
-                autoAlpha: 1,
-                y: 0,
-              }}
-              leaveToOptions={{
-                autoAlpha: 0,
-                y: -150,
-              }}
-            >
-              <img src="/images/main_top10_stroke.png" alt="TOP 10 !" />
-            </ScrollTrigger>
-            <ScrollTrigger
-              enterFromOptions={{
-                autoAlpha: 0,
-                y: 150,
-              }}
-              enterToOptions={{
-                delay: 1.6,
-                autoAlpha: 1,
-                y: 0,
-              }}
-              leaveFromOptions={{
-                autoAlpha: 1,
-                y: 0,
-              }}
-              leaveToOptions={{
-                autoAlpha: 0,
-                y: -150,
-              }}
-            >
-              <img src="/images/main_top10_fill.png" alt="TOP 10 !" />
-            </ScrollTrigger>
+              src="/images/main_top10_fill.png"
+              alt="TOP 10 !"
+            />
           </MainTop10>
           <MainTextContainer>
             <ScrollTrigger
@@ -337,7 +274,6 @@ function Home(): React.ReactElement {
                 y: 150,
               }}
               enterToOptions={{
-                delay: 2,
                 opacity: 1,
                 y: 0,
               }}
@@ -358,7 +294,7 @@ function Home(): React.ReactElement {
                 y: 150,
               }}
               enterToOptions={{
-                delay: 2.2,
+                delay: 0.1,
                 opacity: 1,
                 y: 0,
               }}
@@ -379,7 +315,7 @@ function Home(): React.ReactElement {
                 y: 150,
               }}
               enterToOptions={{
-                delay: 2.4,
+                delay: 0.2,
                 opacity: 1,
                 y: 0,
               }}
@@ -403,7 +339,7 @@ function Home(): React.ReactElement {
                 y: 150,
               }}
               enterToOptions={{
-                delay: 2.6,
+                delay: 0.3,
                 opacity: 1,
                 y: 0,
               }}
@@ -480,7 +416,7 @@ function Home(): React.ReactElement {
                     y: 150,
                   }}
                   enterToOptions={{
-                    delay: i * 0.05,
+                    delay: (i % 15) * 0.05,
                     opacity: 1,
                     y: 0,
                   }}

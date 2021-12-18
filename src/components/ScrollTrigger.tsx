@@ -8,6 +8,7 @@ interface ScrollTriggerProps<T = HTMLDivElement> extends React.HTMLAttributes<T>
   enterToOptions?: gsap.TweenVars;
   leaveFromOptions?: gsap.TweenVars;
   leaveToOptions?: gsap.TweenVars;
+  once?: boolean;
 }
 
 gsap.registerPlugin(GsapScrollTrigger);
@@ -19,6 +20,7 @@ function ScrollTrigger(
     enterToOptions = {},
     leaveFromOptions = {},
     leaveToOptions = {},
+    once,
     ...props
   }: ScrollTriggerProps,
   ref: any
@@ -27,15 +29,22 @@ function ScrollTrigger(
 
   React.useEffect(() => {
     GsapScrollTrigger.create({
+      once,
       trigger: scrollTriggerRef.current,
       onEnter: (self) => {
-        gsap.fromTo(scrollTriggerRef.current, enterFromOptions, enterToOptions);
+        if (self.direction > 0) {
+          gsap.fromTo(scrollTriggerRef.current, enterFromOptions, enterToOptions);
+        }
       },
       onEnterBack: (self) => {
-        gsap.fromTo(scrollTriggerRef.current, enterFromOptions, enterToOptions);
+        if (self.direction > 0) {
+          gsap.fromTo(scrollTriggerRef.current, enterFromOptions, enterToOptions);
+        }
       },
       onLeave: (self) => {
-        gsap.fromTo(scrollTriggerRef.current, leaveFromOptions, leaveToOptions);
+        if (self.direction < 0) {
+          gsap.fromTo(scrollTriggerRef.current, leaveFromOptions, leaveToOptions);
+        }
       },
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
