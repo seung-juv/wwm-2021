@@ -26,7 +26,7 @@ export const users: User[] = [
   },
   {
     id: 4,
-    name: "규리하",
+    name: "규리",
   },
   {
     id: 5,
@@ -86,7 +86,7 @@ export const users: User[] = [
   },
   {
     id: 19,
-    name: "규리상",
+    name: "규리",
   },
   {
     id: 20,
