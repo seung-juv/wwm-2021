@@ -119,11 +119,30 @@ const SectionTitle = styled.h3`
 `;
 
 const Section2 = styled.div`
-  background-color: #0c0c0c;
   padding: 10rem 0;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
+  position: relative;
+`;
+
+const Section2BackgroundContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  z-index: 0;
+`;
+
+const Section2Background = styled.hr`
+  background-color: #4b00ae;
+  width: 0;
+  height: 12.2rem;
+  border: 0;
+  line-height: 0;
+  margin: 0;
 `;
 
 const Section2Text2 = styled.div`
@@ -410,6 +429,72 @@ function Home(): React.ReactElement {
         </Inner>
       </Section1>
       <Section2>
+        <Section2BackgroundContainer>
+          <ScrollTrigger
+            enterFromOptions={{
+              width: 0,
+            }}
+            enterToOptions={{
+              width: 1216,
+            }}
+            leaveFromOptions={{
+              width: 1216,
+            }}
+            leaveToOptions={{
+              width: 0,
+            }}
+          >
+            <Section2Background />
+          </ScrollTrigger>
+          <ScrollTrigger
+            enterFromOptions={{
+              width: 0,
+            }}
+            enterToOptions={{
+              width: 690,
+            }}
+            leaveFromOptions={{
+              width: 690,
+            }}
+            leaveToOptions={{
+              width: 0,
+            }}
+          >
+            <Section2Background />
+          </ScrollTrigger>
+          <ScrollTrigger
+            enterFromOptions={{
+              width: 0,
+            }}
+            enterToOptions={{
+              width: 690,
+            }}
+            leaveFromOptions={{
+              width: 690,
+            }}
+            leaveToOptions={{
+              width: 0,
+            }}
+          >
+            <Section2Background />
+          </ScrollTrigger>
+          <ScrollTrigger
+            enterFromOptions={{
+              width: 0,
+            }}
+            enterToOptions={{
+              width: 690,
+            }}
+            leaveFromOptions={{
+              width: 690,
+            }}
+            leaveToOptions={{
+              width: 0,
+            }}
+          >
+            <Section2Background />
+          </ScrollTrigger>
+        </Section2BackgroundContainer>
         <Inner>
           <ScrollTrigger
             enterFromOptions={{
