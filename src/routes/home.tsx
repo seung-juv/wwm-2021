@@ -100,7 +100,7 @@ const MoreButton = styled.button`
     top: 0;
     bottom: 0;
     margin: auto 0;
-    background-color: #00f55f;
+    background-color: #fae100;
     z-index: 0;
     transition: 0.5s left ease;
   }
