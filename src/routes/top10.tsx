@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 import Header from "../components/Header";
 import ShareholderInfo from "../components/ShareholderInfo";
 import { Shareholder, shareholders } from "../commons/data";
-import { css } from "@emotion/react";
 
 const Container = styled.main`
   width: 140rem;
