@@ -451,10 +451,10 @@ function Home(): React.ReactElement {
               width: 0,
             }}
             enterToOptions={{
-              width: 690,
+              width: 882,
             }}
             leaveFromOptions={{
-              width: 690,
+              width: 882,
             }}
             leaveToOptions={{
               width: 0,
@@ -483,10 +483,10 @@ function Home(): React.ReactElement {
               width: 0,
             }}
             enterToOptions={{
-              width: 690,
+              width: 498,
             }}
             leaveFromOptions={{
-              width: 690,
+              width: 498,
             }}
             leaveToOptions={{
               width: 0,
