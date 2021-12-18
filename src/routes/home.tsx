@@ -43,12 +43,16 @@ const MainUniverse = styled.div`
 
 const MainTop10 = styled.div`
   margin-bottom: 18rem;
-  height: 33rem;
+  position: relative;
   img {
     display: block;
     position: relative;
     &:not(:last-child) {
       margin-bottom: 1.5rem;
+    }
+    &:last-child {
+      position: absolute;
+      bottom: 0;
     }
   }
 `;
@@ -156,12 +160,13 @@ const Section3Banner = styled.img`
 
 function Home(): React.ReactElement {
   const mount = useMount();
-  const top10Ref = React.useRef<{ stroke: HTMLImageElement | null; fill: HTMLImageElement | null }>(
-    {
-      stroke: null,
-      fill: null,
-    }
-  );
+  const top10Ref = React.useRef<{
+    stroke: Array<HTMLImageElement | null>;
+    fill: HTMLImageElement | null;
+  }>({
+    stroke: [],
+    fill: null,
+  });
   const timeline = React.useMemo(() => gsap.timeline(), []);
 
   React.useEffect(() => {
@@ -169,14 +174,16 @@ function Home(): React.ReactElement {
       timeline
         .to(top10Ref.current.fill, { opacity: 0, duration: 0.001 })
         .to(top10Ref.current.stroke, { opacity: 0, duration: 0 })
-        .to(top10Ref.current.stroke, { opacity: 1, delay: 2, duration: 0.001 })
-        .to(top10Ref.current.stroke, { opacity: 0, delay: 0.5, duration: 0.001 })
-        .to(top10Ref.current.stroke, { top: 115, opacity: 1, delay: 0.75, duration: 0.001 })
-        .to(top10Ref.current.stroke, { opacity: 0, delay: 0.5, duration: 0.001 })
-        .to(top10Ref.current.stroke, { top: 230, opacity: 1, delay: 0.75, duration: 0.001 })
-        .to(top10Ref.current.stroke, { opacity: 0, delay: 0.5, duration: 0.001 })
-        .to(top10Ref.current.fill, { top: 115, opacity: 1, delay: 0.75, duration: 0.001 });
+        .to(top10Ref.current.stroke[0], { opacity: 1, delay: 1, duration: 0.001 })
+        .to(top10Ref.current.stroke[1], { opacity: 1, delay: 0.1, duration: 0.001 })
+        .to(top10Ref.current.stroke[0], { opacity: 0, delay: 0.05, duration: 0.001 })
+        .to(top10Ref.current.stroke[2], { opacity: 1, delay: 0.1, duration: 0.001 })
+        .to(top10Ref.current.stroke[1], { opacity: 0, delay: 0.05, duration: 0.001 })
+        .to(top10Ref.current.fill, { opacity: 1, delay: 0.15, duration: 0.001 })
+        .to(top10Ref.current.fill, { opacity: 0, delay: 0.15, duration: 0.001 })
+        .to(top10Ref.current.fill, { opacity: 1, delay: 0.15, duration: 0.001 });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mount]);
 
   return (
@@ -254,7 +261,21 @@ function Home(): React.ReactElement {
           <MainTop10>
             <img
               ref={(ref) => {
-                top10Ref.current.stroke = ref;
+                top10Ref.current.stroke.push(ref);
+              }}
+              src="/images/main_top10_stroke.png"
+              alt="TOP 10 !"
+            />
+            <img
+              ref={(ref) => {
+                top10Ref.current.stroke.push(ref);
+              }}
+              src="/images/main_top10_stroke.png"
+              alt="TOP 10 !"
+            />
+            <img
+              ref={(ref) => {
+                top10Ref.current.stroke.push(ref);
               }}
               src="/images/main_top10_stroke.png"
               alt="TOP 10 !"
