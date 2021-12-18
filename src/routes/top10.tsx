@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import Header from "../components/Header";
 import ShareholderInfo from "../components/ShareholderInfo";
 import { Shareholder, shareholders } from "../commons/data";
+import { css } from "@emotion/react";
 
 const Container = styled.main`
   width: 140rem;
@@ -23,7 +24,7 @@ const Title = styled.h3`
   font-weight: 600;
 `;
 
-const ProfileInfoContainer = styled.div`
+const ShareholderInfoContainer = styled.div`
   width: 94.4rem;
   margin: 0 auto 4rem;
 `;
@@ -36,21 +37,48 @@ const Description = styled.p`
   text-align: center;
 `;
 
-const ProfileContainer = styled.div`
+const ShareHoldersContainer = styled.div`
   display: flex;
   gap: 2.4rem;
   margin-bottom: 2rem;
 `;
 
-const Profile = styled.button`
+const Profile = styled.button<{ active: boolean }>`
   cursor: pointer;
   width: 12rem;
   height: 12rem;
   border-radius: 12rem;
   overflow: hidden;
+  position: relative;
+  transition: 0.25s transform ease;
   img {
     width: 100%;
     height: 100%;
+  }
+  &:hover {
+    transform: scale(0.9);
+  }
+  &:active {
+    transform: scale(0.8);
+  }
+`;
+
+const ProfileCheck = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(250, 225, 0, 0.5);
+  img {
+    width: 6.4rem;
+    height: 4.6rem;
   }
 `;
 
@@ -65,24 +93,30 @@ function Top10(): React.ReactElement {
           <img src="/images/top10/top10.png" alt="TOP10!" />
         </SubTitle>
         <Title>웹웹모 대주주 명단</Title>
-        <ProfileInfoContainer>
+        <ShareholderInfoContainer>
           <ShareholderInfo {...selectedProfile} />
-        </ProfileInfoContainer>
-        <ProfileContainer>
+        </ShareholderInfoContainer>
+        <ShareHoldersContainer>
           {shareholders.map((shareholder: Shareholder): React.ReactElement => {
             const { id, user } = shareholder;
+            const active: boolean = selectedProfile.id === id;
 
             function handleClick(): void {
               setSelectedProfile(shareholder);
             }
 
             return (
-              <Profile key={id} onClick={handleClick}>
+              <Profile key={id} onClick={handleClick} active={active}>
                 <img src={`/images/profile/${user.id}.jpg`} alt={user.name} />
+                {active && (
+                  <ProfileCheck>
+                    <img src="/images/icons/icon_check_white.png" alt="check" />
+                  </ProfileCheck>
+                )}
               </Profile>
             );
           })}
-        </ProfileContainer>
+        </ShareHoldersContainer>
         <Description>
           2021년 한 해 말을 가장 많이 한 사람들 (기준 2021.1.22.~12.16.) 오차 있어봐야 얼마 차이
           안남
