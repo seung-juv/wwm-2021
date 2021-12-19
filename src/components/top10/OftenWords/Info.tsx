@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Shareholder } from "../commons/data";
-import format from "../utils/format";
+import { OftenWord } from "../../../commons/data";
 
 const Container = styled.div`
   display: flex;
@@ -42,13 +41,6 @@ const ProfileImage = styled.img`
   border-radius: 100%;
 `;
 
-const Medal = styled.img`
-  position: absolute;
-  height: 7rem;
-  top: 1rem;
-  right: 0.5rem;
-`;
-
 const MetaContainer = styled.div``;
 
 const Name = styled.span`
@@ -79,71 +71,37 @@ const RankTitle = styled.dt`
   letter-spacing: -0.08rem;
   border: 1px solid #ffffff;
   border-radius: 5rem;
-  padding: 0.7rem 2.5rem;
+  padding: 0.7rem 4rem;
   margin-bottom: 1rem;
 `;
 
 const RankDescription = styled.dd`
   font-size: 2.5rem;
   letter-spacing: -0.08rem;
-  font-weight: 400;
   color: #ffffff;
-  b {
-    font-size: 3.3rem;
-    font-weight: 500;
-  }
+  font-weight: 500;
+  font-size: 3.3rem;
 `;
 
-function ShareholderInfo({
-  id,
-  user,
-  rank,
-  conversationCount,
-  share,
-}: Shareholder): React.ReactElement {
-  const medal = React.useMemo<string | null>(() => {
-    switch (rank) {
-      case 1:
-        return "/images/gold.png";
-      case 2:
-        return "/images/silver.png";
-      case 3:
-        return "/images/bronze.png";
-      default:
-        return null;
-    }
-  }, [rank]);
+function OftenWordInfo({ user, rank, words }: OftenWord): React.ReactElement {
   return (
     <Container>
       <Profile>
-        {medal !== null && <Medal src={medal} alt={`${rank}위`} />}
         <ProfileImage src={`/images/profile/${user.id}.jpg`} alt={user.name} />
       </Profile>
       <MetaContainer>
         <Name>{user.name}</Name>
         <RankContainer>
-          <RankLink>
-            <RankTitle>전체순위</RankTitle>
-            <RankDescription>
-              <b>{rank}</b>위
-            </RankDescription>
-          </RankLink>
-          <RankLink>
-            <RankTitle>대화량</RankTitle>
-            <RankDescription>
-              <b>{format.comma(conversationCount)}</b>회
-            </RankDescription>
-          </RankLink>
-          <RankLink>
-            <RankTitle>톡방지분</RankTitle>
-            <RankDescription>
-              <b>{Number((share * 100).toFixed(2))}</b>%
-            </RankDescription>
-          </RankLink>
+          {words.map(({ id, rank, word }) => (
+            <RankLink key={id}>
+              <RankTitle>{rank}위</RankTitle>
+              <RankDescription>{word}</RankDescription>
+            </RankLink>
+          ))}
         </RankContainer>
       </MetaContainer>
     </Container>
   );
 }
 
-export default ShareholderInfo;
+export default OftenWordInfo;

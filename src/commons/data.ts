@@ -11,6 +11,20 @@ export interface Shareholder {
   share: number;
 }
 
+export interface Word {
+  id: number;
+  user: User;
+  rank: number;
+  word: string;
+}
+
+export interface OftenWord {
+  id: number;
+  user: User;
+  rank: number;
+  words: Word[];
+}
+
 export const users: User[] = [
   {
     id: 1,
@@ -204,5 +218,83 @@ export const shareholders: Shareholder[] = [
     rank: 10,
     conversationCount: 17312,
     share: 0.037,
+  },
+];
+
+export const words: Word[] = [
+  {
+    id: 1,
+    user: users[5],
+    rank: 1,
+    word: "근데",
+  },
+  {
+    id: 2,
+    user: users[5],
+    rank: 2,
+    word: "저는",
+  },
+  {
+    id: 3,
+    user: users[5],
+    rank: 3,
+    word: "ㄷㄷ",
+  },
+  {
+    id: 4,
+    user: users[0],
+    rank: 1,
+    word: "진짜",
+  },
+  {
+    id: 5,
+    user: users[0],
+    rank: 2,
+    word: "저도",
+  },
+  {
+    id: 6,
+    user: users[0],
+    rank: 3,
+    word: "그냥",
+  },
+  {
+    id: 7,
+    user: users[18],
+    rank: 1,
+    word: "ㅋ",
+  },
+  {
+    id: 8,
+    user: users[18],
+    rank: 2,
+    word: "ㄷㄷ",
+  },
+  {
+    id: 9,
+    user: users[18],
+    rank: 3,
+    word: "아",
+  },
+];
+
+export const oftenWords: OftenWord[] = [
+  {
+    id: 1,
+    user: users[5],
+    rank: 1,
+    words: words.filter(({ user }) => user.id === users[5].id),
+  },
+  {
+    id: 2,
+    user: users[0],
+    rank: 2,
+    words: words.filter(({ user }) => user.id === users[0].id),
+  },
+  {
+    id: 3,
+    user: users[18],
+    rank: 3,
+    words: words.filter(({ user }) => user.id === users[18].id),
   },
 ];
