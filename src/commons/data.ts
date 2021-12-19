@@ -39,6 +39,8 @@ export interface Insider {
   totalCall: Call;
 }
 
+export interface Outsider extends Insider {}
+
 export const users: User[] = [
   {
     id: 1,
@@ -414,6 +416,128 @@ export const insiders: Insider[] = [
     totalCall: {
       count: 904,
       rank: 6,
+    },
+  },
+];
+
+export const outsiders: Outsider[] = [
+  {
+    id: 1,
+    user: users[18],
+    rank: 7,
+    firstHalfCall: {
+      count: 266,
+      rank: 7,
+    },
+    secondHalfCall: {
+      count: 466,
+      rank: 8,
+    },
+    totalCall: {
+      count: 732,
+      rank: 7,
+    },
+  },
+  {
+    id: 2,
+    user: users[7],
+    rank: 8,
+    firstHalfCall: {
+      count: 14,
+      rank: 26,
+    },
+    secondHalfCall: {
+      count: 702,
+      rank: 5,
+    },
+    totalCall: {
+      count: 716,
+      rank: 8,
+    },
+  },
+  {
+    id: 3,
+    user: users[13],
+    rank: 9,
+    firstHalfCall: {
+      count: 327,
+      rank: 5,
+    },
+    secondHalfCall: {
+      count: 354,
+      rank: 10,
+    },
+    totalCall: {
+      count: 681,
+      rank: 9,
+    },
+  },
+  {
+    id: 4,
+    user: users[9],
+    rank: 10,
+    firstHalfCall: {
+      count: 235,
+      rank: 9,
+    },
+    secondHalfCall: {
+      count: 435,
+      rank: 9,
+    },
+    totalCall: {
+      count: 670,
+      rank: 10,
+    },
+  },
+  {
+    id: 5,
+    user: users[11],
+    rank: 11,
+    firstHalfCall: {
+      count: 252,
+      rank: 8,
+    },
+    secondHalfCall: {
+      count: 339,
+      rank: 12,
+    },
+    totalCall: {
+      count: 591,
+      rank: 11,
+    },
+  },
+  {
+    id: 6,
+    user: users[6],
+    rank: 12,
+    firstHalfCall: {
+      count: 300,
+      rank: 5,
+    },
+    secondHalfCall: {
+      count: 243,
+      rank: 18,
+    },
+    totalCall: {
+      count: 543,
+      rank: 12,
+    },
+  },
+  {
+    id: 7,
+    user: users[14],
+    rank: 13,
+    firstHalfCall: {
+      count: 120,
+      rank: 14,
+    },
+    secondHalfCall: {
+      count: 339,
+      rank: 13,
+    },
+    totalCall: {
+      count: 459,
+      rank: 13,
     },
   },
 ];

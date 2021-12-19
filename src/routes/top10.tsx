@@ -1,13 +1,15 @@
 import React from "react";
 import styled from "@emotion/styled";
 import Header from "../components/Header";
+import Shareholders from "../components/top10/Shareholders";
+import OftenWords from "../components/top10/OftenWords";
+import Insiders from "../components/top10/Insiders";
+import Outsiders from "../components/top10/Outsiders";
+
 import SwiperCore, { A11y, Mousewheel } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
-import Shareholders from "../components/top10/Shareholders";
-import OftenWords from "../components/top10/OftenWords";
-import Insiders from "../components/top10/Insiders";
 
 SwiperCore.use([A11y, Mousewheel]);
 
@@ -42,6 +44,9 @@ function Top10(): React.ReactElement {
           </SwiperSlide>
           <SwiperSlide>
             <Insiders />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Outsiders />
           </SwiperSlide>
         </Swiper>
       </Container>
