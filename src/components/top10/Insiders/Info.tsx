@@ -41,6 +41,13 @@ const ProfileImage = styled.img`
   border-radius: 100%;
 `;
 
+const Medal = styled.img`
+  position: absolute;
+  height: 7rem;
+  top: 1rem;
+  right: 0.5rem;
+`;
+
 const MetaContainer = styled.div``;
 
 const Name = styled.span`
@@ -90,7 +97,9 @@ const RankDescription = styled.dd`
   span {
     font-size: 2rem;
     margin-top: 0.5rem;
+    font-weight: 300;
     display: block;
+    opacity: 0.3;
   }
 `;
 
@@ -101,9 +110,22 @@ function InsderInfo({
   secondHalfCall,
   totalCall,
 }: Insider): React.ReactElement {
+  const medal = React.useMemo<string | null>(() => {
+    switch (rank) {
+      case 1:
+        return "/images/gold.png";
+      case 2:
+        return "/images/silver.png";
+      case 3:
+        return "/images/bronze.png";
+      default:
+        return null;
+    }
+  }, [rank]);
   return (
     <Container>
       <Profile>
+        {medal !== null && <Medal src={medal} alt={`${rank}위`} />}
         <ProfileImage src={`/images/profile/${user.id}.jpg`} alt={user.name} />
       </Profile>
       <MetaContainer>
