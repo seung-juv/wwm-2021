@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import Shareholders from "../components/top10/Shareholders";
 import OftenWords from "../components/top10/OftenWords";
+import Insiders from "../components/top10/Insiders";
 
 SwiperCore.use([A11y, Mousewheel]);
 
@@ -38,6 +39,9 @@ function Top10(): React.ReactElement {
           </SwiperSlide>
           <SwiperSlide>
             <OftenWords />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Insiders />
           </SwiperSlide>
         </Swiper>
       </Container>

@@ -79,7 +79,9 @@ const RankTitle = styled.dt`
   letter-spacing: -0.08rem;
   border: 1px solid #ffffff;
   border-radius: 5rem;
-  padding: 0.7rem 2.5rem;
+  width: 12rem;
+  text-align: center;
+  padding: 0.7rem 0;
   margin-bottom: 1rem;
 `;
 

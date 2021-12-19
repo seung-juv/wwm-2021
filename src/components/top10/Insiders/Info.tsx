@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { OftenWord } from "../../../commons/data";
+import { Insider } from "../../../commons/data";
 
 const Container = styled.div`
   display: flex;
@@ -80,12 +80,27 @@ const RankTitle = styled.dt`
 const RankDescription = styled.dd`
   font-size: 2.5rem;
   letter-spacing: -0.08rem;
+  font-weight: 400;
   color: #ffffff;
-  font-weight: 500;
-  font-size: 3.3rem;
+  text-align: center;
+  b {
+    font-size: 3.3rem;
+    font-weight: 500;
+  }
+  span {
+    font-size: 2rem;
+    margin-top: 0.5rem;
+    display: block;
+  }
 `;
 
-function OftenWordInfo({ user, rank, words }: OftenWord): React.ReactElement {
+function InsderInfo({
+  user,
+  rank,
+  firstHalfCall,
+  secondHalfCall,
+  totalCall,
+}: Insider): React.ReactElement {
   return (
     <Container>
       <Profile>
@@ -94,16 +109,28 @@ function OftenWordInfo({ user, rank, words }: OftenWord): React.ReactElement {
       <MetaContainer>
         <Name>{user.name}</Name>
         <RankContainer>
-          {words.map(({ id, rank, word }) => (
-            <RankLink key={id}>
-              <RankTitle>{rank}위</RankTitle>
-              <RankDescription>{word}</RankDescription>
-            </RankLink>
-          ))}
+          <RankLink>
+            <RankTitle>상반기순위</RankTitle>
+            <RankDescription>
+              <b>{firstHalfCall.rank}</b>위<span>{firstHalfCall.count}회</span>
+            </RankDescription>
+          </RankLink>
+          <RankLink>
+            <RankTitle>하반기순위</RankTitle>
+            <RankDescription>
+              <b>{secondHalfCall.rank}</b>위<span>{secondHalfCall.count}회</span>
+            </RankDescription>
+          </RankLink>
+          <RankLink>
+            <RankTitle>총 순위</RankTitle>
+            <RankDescription>
+              <b>{totalCall.rank}</b>위<span>{totalCall.count}회</span>
+            </RankDescription>
+          </RankLink>
         </RankContainer>
       </MetaContainer>
     </Container>
   );
 }
 
-export default OftenWordInfo;
+export default InsderInfo;

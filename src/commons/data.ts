@@ -25,6 +25,20 @@ export interface OftenWord {
   words: Word[];
 }
 
+export interface Call {
+  rank: number;
+  count: number;
+}
+
+export interface Insider {
+  id: number;
+  user: User;
+  rank: number;
+  firstHalfCall: Call;
+  secondHalfCall: Call;
+  totalCall: Call;
+}
+
 export const users: User[] = [
   {
     id: 1,
@@ -296,5 +310,110 @@ export const oftenWords: OftenWord[] = [
     user: users[18],
     rank: 3,
     words: words.filter(({ user }) => user.id === users[18].id),
+  },
+];
+
+export const insiders: Insider[] = [
+  {
+    id: 1,
+    user: users[5],
+    rank: 1,
+    firstHalfCall: {
+      count: 788,
+      rank: 1,
+    },
+    secondHalfCall: {
+      count: 934,
+      rank: 2,
+    },
+    totalCall: {
+      count: 1722,
+      rank: 1,
+    },
+  },
+  {
+    id: 2,
+    user: users[0],
+    rank: 2,
+    firstHalfCall: {
+      count: 98,
+      rank: 15,
+    },
+    secondHalfCall: {
+      count: 1100,
+      rank: 1,
+    },
+    totalCall: {
+      count: 1198,
+      rank: 2,
+    },
+  },
+  {
+    id: 3,
+    user: users[1],
+    rank: 3,
+    firstHalfCall: {
+      count: 287,
+      rank: 6,
+    },
+    secondHalfCall: {
+      count: 778,
+      rank: 4,
+    },
+    totalCall: {
+      count: 1065,
+      rank: 3,
+    },
+  },
+  {
+    id: 4,
+    user: users[15],
+    rank: 4,
+    firstHalfCall: {
+      count: 219,
+      rank: 10,
+    },
+    secondHalfCall: {
+      count: 832,
+      rank: 3,
+    },
+    totalCall: {
+      count: 1051,
+      rank: 4,
+    },
+  },
+  {
+    id: 5,
+    user: users[10],
+    rank: 5,
+    firstHalfCall: {
+      count: 536,
+      rank: 2,
+    },
+    secondHalfCall: {
+      count: 472,
+      rank: 7,
+    },
+    totalCall: {
+      count: 1008,
+      rank: 5,
+    },
+  },
+  {
+    id: 6,
+    user: users[12],
+    rank: 6,
+    firstHalfCall: {
+      count: 399,
+      rank: 3,
+    },
+    secondHalfCall: {
+      count: 505,
+      rank: 6,
+    },
+    totalCall: {
+      count: 904,
+      rank: 6,
+    },
   },
 ];
