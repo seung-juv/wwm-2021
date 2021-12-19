@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { OftenWord } from "../../../commons/data";
+import { Top3OftenWord } from "../../../commons/data";
 
 const Container = styled.div`
   display: flex;
@@ -85,7 +85,7 @@ const RankDescription = styled.dd`
   font-size: 3.3rem;
 `;
 
-function OftenWordInfo({ user, rank, words }: OftenWord): React.ReactElement {
+function Top3OftenWordInfo({ user, rank, words }: Top3OftenWord): React.ReactElement {
   return (
     <Container>
       <Profile>
@@ -106,4 +106,4 @@ function OftenWordInfo({ user, rank, words }: OftenWord): React.ReactElement {
   );
 }
 
-export default OftenWordInfo;
+export default Top3OftenWordInfo;

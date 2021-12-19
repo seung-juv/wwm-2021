@@ -13,12 +13,13 @@ export interface Shareholder {
 
 export interface Word {
   id: number;
-  user: User;
+  user?: User;
   rank: number;
   word: string;
+  count?: number;
 }
 
-export interface OftenWord {
+export interface Top3OftenWord {
   id: number;
   user: User;
   rank: number;
@@ -294,24 +295,24 @@ export const words: Word[] = [
   },
 ];
 
-export const oftenWords: OftenWord[] = [
+export const top3OftenWords: Top3OftenWord[] = [
   {
     id: 1,
     user: users[5],
     rank: 1,
-    words: words.filter(({ user }) => user.id === users[5].id),
+    words: words.filter(({ user }) => user?.id === users[5].id),
   },
   {
     id: 2,
     user: users[0],
     rank: 2,
-    words: words.filter(({ user }) => user.id === users[0].id),
+    words: words.filter(({ user }) => user?.id === users[0].id),
   },
   {
     id: 3,
     user: users[18],
     rank: 3,
-    words: words.filter(({ user }) => user.id === users[18].id),
+    words: words.filter(({ user }) => user?.id === users[18].id),
   },
 ];
 
@@ -539,5 +540,68 @@ export const outsiders: Outsider[] = [
       count: 459,
       rank: 13,
     },
+  },
+];
+
+export const oftenWords: Word[] = [
+  {
+    id: 1,
+    word: "전/저는",
+    rank: 1,
+    count: 8977,
+  },
+  {
+    id: 2,
+    word: "ㄷㄷ/ㄷ",
+    rank: 2,
+    count: 8805,
+  },
+  {
+    id: 3,
+    word: "ㅋㅋㅋ",
+    rank: 3,
+    count: 6834,
+  },
+  {
+    id: 4,
+    word: "근데",
+    rank: 4,
+    count: 5587,
+  },
+  {
+    id: 5,
+    word: "진짜",
+    rank: 5,
+    count: 4825,
+  },
+  {
+    id: 6,
+    word: "아",
+    rank: 6,
+    count: 4755,
+  },
+  {
+    id: 7,
+    word: "네",
+    rank: 7,
+    count: 3672,
+  },
+  {
+    id: 8,
+    word: "그냥",
+    rank: 8,
+    count: 3408,
+  },
+  {
+    id: 9,
+    word: "ㅠㅠ",
+    rank: 9,
+    count: 3209,
+  },
+  {
+    id: 10,
+    word: "그",
+    rank: 10,
+    count: 3182,
   },
 ];

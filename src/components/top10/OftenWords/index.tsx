@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
-import OftenWordInfo from "./Info";
-import { OftenWord, oftenWords } from "../../../commons/data";
+import { Word, oftenWords } from "../../../commons/data";
+import format from "../../../utils/format";
 
 const Container = styled.div``;
 
@@ -18,11 +18,6 @@ const Title = styled.h3`
   font-weight: 600;
 `;
 
-const OftenWordInfoContainer = styled.div`
-  width: 94.4rem;
-  margin: 0 auto 4rem;
-`;
-
 const Description = styled.p`
   font-size: 2rem;
   color: #555555;
@@ -32,81 +27,61 @@ const Description = styled.p`
 `;
 
 const OftenWordsContainer = styled.div`
-  display: flex;
+  display: grid;
+  width: 78rem;
+  margin: 0 auto 2rem;
   gap: 2.4rem;
-  margin-bottom: 2rem;
   justify-content: center;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-auto-flow: column;
 `;
 
-const Profile = styled.button<{ active: boolean }>`
-  cursor: pointer;
-  width: 12rem;
-  height: 12rem;
-  border-radius: 12rem;
-  overflow: hidden;
-  position: relative;
-  transition: 0.25s transform ease;
-  img {
-    width: 100%;
-    height: 100%;
-  }
-  &:hover {
-    transform: scale(0.9);
-  }
-  &:active {
-    transform: scale(0.8);
-  }
-`;
-
-const ProfileCheck = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
+const OftenWordContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  background-color: rgba(250, 225, 0, 0.5);
-  img {
-    width: 6.4rem;
-    height: 4.6rem;
-  }
+  border: 1px solid #555555;
+  background-color: #222222;
+  border-radius: 3.3rem;
+  padding: 2.5rem 4rem;
+`;
+
+const Rank = styled.span`
+  font-size: 5rem;
+  color: #585858;
+  font-weight: 600;
+`;
+
+const OftenWord = styled.p`
+  text-align: center;
+  font-size: 3rem;
+  color: #bbbbbb;
+  font-weight: 500;
+  flex: 1;
+`;
+
+const Count = styled.span`
+  font-size: 2rem;
+  color: #bbbbbb;
+  font-weight: 500;
 `;
 
 const OftenWords = (): React.ReactElement => {
-  const [selected, setSelected] = React.useState<OftenWord>(oftenWords[0]);
-
   return (
     <Container>
       <SubTitle>
         <img src="/images/top10/top10.png" alt="TOP10!" />
       </SubTitle>
-      <Title>대주주 TOP3가 자주 사용한 단어</Title>
-      <OftenWordInfoContainer>
-        <OftenWordInfo {...selected} />
-      </OftenWordInfoContainer>
+      <Title>웹둥이들이 많이 사용한 단어</Title>
       <OftenWordsContainer>
-        {oftenWords.map((oftenWord: OftenWord): React.ReactElement => {
-          const { id, user } = oftenWord;
-          const active: boolean = selected.id === id;
-
-          function handleClick(): void {
-            setSelected(oftenWord);
-          }
-
+        {oftenWords.map(({ id, rank, word, count }: Word): React.ReactElement => {
           return (
-            <Profile key={id} onClick={handleClick} active={active}>
-              <img src={`/images/profile/${user.id}.jpg`} alt={user.name} />
-              {active && (
-                <ProfileCheck>
-                  <img src="/images/icons/icon_check_white.png" alt="check" />
-                </ProfileCheck>
-              )}
-            </Profile>
+            <OftenWordContainer key={id}>
+              <Rank>{rank}</Rank>
+              <OftenWord>{word}</OftenWord>
+              <Count>{format.comma(count ?? 0)}회</Count>
+            </OftenWordContainer>
           );
         })}
       </OftenWordsContainer>
