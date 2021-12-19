@@ -110,7 +110,10 @@ const Insiders = (): React.ReactElement => {
           );
         })}
       </InsidersContainer>
-      <Description>이모티콘과 사진/동영상 및 겹치는 단어는 제외하였습니다.</Description>
+      <Description>
+        2021 한 해 동안 사람들이 가장 많이 이름을 부른 사람 순위입니다. 이름만 있는 것 제외 후
+        'OO님'만 취합하였습니다.
+      </Description>
     </Container>
   );
 };
