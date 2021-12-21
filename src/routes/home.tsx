@@ -589,7 +589,7 @@ function Home(): React.ReactElement {
             }}
           >
             <Section2MoreButton>
-              <Link to="/">
+              <Link to="/ceremony">
                 <img src="/images/button_text.png" alt="보러가기" />
               </Link>
             </Section2MoreButton>
