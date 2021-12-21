@@ -5,6 +5,7 @@ import Issues from "../components/caremony/Issues";
 import MostHelpers from "../components/caremony/mostHelpers";
 import MostNonsensers from "../components/caremony/mostNonsensers";
 import MostCuties from "../components/caremony/mostCuties";
+import MostOverworkers from "../components/caremony/mostOverworkers";
 
 import SwiperCore, { A11y, Mousewheel } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -53,6 +54,9 @@ function Caremony(): React.ReactElement {
           </SwiperSlide>
           <SwiperSlide>
             <MostCuties />
+          </SwiperSlide>
+          <SwiperSlide>
+            <MostOverworkers />
           </SwiperSlide>
         </Swiper>
       </Container>

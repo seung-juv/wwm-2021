@@ -7,7 +7,7 @@ export interface MostProps {
   subTitle: string;
   title: string;
   mostUsers: User[];
-  users: User[];
+  users?: User[];
 }
 
 const Container = styled.div`
@@ -199,17 +199,21 @@ const Most = ({ subTitle, title, mostUsers, users }: MostProps): React.ReactElem
           })}
         </ProfilesContainer>
       </MostUsersContainer>
-      <More onClick={handleToggleMore}>더보기 {isMore ? "▲" : "▼"} </More>
-      <UsersContainer isMore={isMore}>
-        {users.map(({ id, name }, index) => {
-          return (
-            <Cutie key={id}>
-              <CutieRank>{index + 4}</CutieRank>
-              <CutieName>{name}</CutieName>
-            </Cutie>
-          );
-        })}
-      </UsersContainer>
+      {users && users.length > 0 && (
+        <>
+          <More onClick={handleToggleMore}>더보기 {isMore ? "▲" : "▼"} </More>
+          <UsersContainer isMore={isMore}>
+            {users.map(({ id, name }, index) => {
+              return (
+                <Cutie key={id}>
+                  <CutieRank>{index + 4}</CutieRank>
+                  <CutieName>{name}</CutieName>
+                </Cutie>
+              );
+            })}
+          </UsersContainer>
+        </>
+      )}
     </Container>
   );
 };
