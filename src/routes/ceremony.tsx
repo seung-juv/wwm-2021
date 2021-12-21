@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import Header from "../components/Header";
 import OftenWords from "../components/top10/OftenWords";
 import Issues from "../components/caremony/Issues";
+import MouseHelpers from "../components/caremony/mostHelpers";
 
 import SwiperCore, { A11y, Mousewheel } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -44,7 +45,7 @@ function Caremony(): React.ReactElement {
             <Issues />
           </SwiperSlide>
           <SwiperSlide>
-            <OftenWords />
+            <MouseHelpers />
           </SwiperSlide>
           <SwiperSlide>
             <OftenWords />
