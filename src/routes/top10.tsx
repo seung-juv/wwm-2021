@@ -16,10 +16,17 @@ SwiperCore.use([A11y, Mousewheel]);
 
 const Container = styled.main`
   width: 140rem;
+  height: calc(100vh - 10rem);
   margin: 0 auto;
   overflow: hidden;
-  .swiper-slide {
-    padding: 8rem 0;
+  .swiper-wrapper {
+    max-height: calc(100vh - 10rem);
+    .swiper-slide {
+      padding: 8rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 `;
 
@@ -30,12 +37,11 @@ function Top10(): React.ReactElement {
       <Container>
         <Swiper
           direction="vertical"
-          slidesPerView="auto"
+          slidesPerView={1}
           mousewheel
           noSwiping
           allowTouchMove={false}
           keyboard={{ enabled: true }}
-          autoHeight
         >
           <SwiperSlide>
             <Shareholders />
