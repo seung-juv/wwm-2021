@@ -12,6 +12,7 @@ import SwiperCore, { A11y, Mousewheel } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
+import MostChristmas from "../components/caremony/mostChristmas";
 
 SwiperCore.use([A11y, Mousewheel]);
 
@@ -61,6 +62,9 @@ function Caremony(): React.ReactElement {
           </SwiperSlide>
           <SwiperSlide>
             <MostDeathRoll />
+          </SwiperSlide>
+          <SwiperSlide>
+            <MostChristmas />
           </SwiperSlide>
         </Swiper>
       </Container>

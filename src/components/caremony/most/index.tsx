@@ -207,7 +207,7 @@ const Most = ({ subTitle, title, mostUsers, users }: MostProps): React.ReactElem
               return (
                 <Cutie key={id}>
                   <CutieRank>{index + 4}</CutieRank>
-                  <CutieName>{name}</CutieName>
+                  <CutieName>{name.substring(0, 3)}</CutieName>
                 </Cutie>
               );
             })}
