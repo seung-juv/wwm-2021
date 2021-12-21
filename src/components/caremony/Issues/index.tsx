@@ -1,7 +1,5 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Word, oftenWords } from "../../../commons/data";
-import format from "../../../utils/format";
 
 const Container = styled.div``;
 
@@ -26,7 +24,7 @@ const Description = styled.p`
   text-align: center;
 `;
 
-const OftenWordsContainer = styled.div`
+const IssuesContainer = styled.div`
   display: grid;
   width: 78rem;
   margin: 0 auto 2rem;
@@ -37,7 +35,7 @@ const OftenWordsContainer = styled.div`
   grid-auto-flow: column;
 `;
 
-const OftenWordContainer = styled.div`
+const IssueContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -60,7 +58,7 @@ const Rank = styled.span`
   line-height: 150%;
 `;
 
-const OftenWord = styled.p`
+const Issue = styled.p`
   text-align: center;
   font-size: 3rem;
   color: #bbbbbb;
@@ -68,33 +66,39 @@ const OftenWord = styled.p`
   flex: 1;
 `;
 
-const Count = styled.span`
-  font-size: 2rem;
-  color: #bbbbbb;
-  font-weight: 500;
-`;
+const issues: Array<string> = [
+  "퇴사",
+  "주식/코인",
+  "쿠키런 킹덤",
+  "다이어트/헬스",
+  "MBTI",
+  "백신",
+  "퇴사",
+  "자취",
+  "붕어빵",
+  "청약",
+];
 
-const OftenWords = (): React.ReactElement => {
+const Issues = (): React.ReactElement => {
   return (
     <Container>
       <SubTitle>
-        <img src="/images/top10/top10.png" alt="TOP10!" />
+        <img src="/images/caremony/issues_subtitle.png" alt="TOP10!" />
       </SubTitle>
-      <Title>웹둥이들이 많이 사용한 단어</Title>
-      <OftenWordsContainer>
-        {oftenWords.map(({ id, rank, word, count }: Word): React.ReactElement => {
+      <Title>올해의 이슈</Title>
+      <IssuesContainer>
+        {issues.map((issue, index): React.ReactElement => {
           return (
-            <OftenWordContainer key={id}>
-              <Rank>{rank}</Rank>
-              <OftenWord>{word}</OftenWord>
-              <Count>{format.comma(count ?? 0)}회</Count>
-            </OftenWordContainer>
+            <IssueContainer key={index}>
+              <Rank>{index + 1}</Rank>
+              <Issue>{issue}</Issue>
+            </IssueContainer>
           );
         })}
-      </OftenWordsContainer>
-      <Description>이모티콘과 사진/동영상 및 겹치는 단어는 제외하였습니다.</Description>
+      </IssuesContainer>
+      <Description>순위 내 맘대로 선정했고 반박 안받습니다.</Description>
     </Container>
   );
 };
 
-export default OftenWords;
+export default Issues;
