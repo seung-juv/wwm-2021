@@ -163,6 +163,14 @@ export const users: User[] = [
     id: 30,
     name: "프로필",
   },
+  {
+    id: 31,
+    name: "박규",
+  },
+  {
+    id: 32,
+    name: "철민",
+  },
 ];
 
 export const shareholders: Shareholder[] = [

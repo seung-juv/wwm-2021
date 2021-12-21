@@ -95,7 +95,7 @@ const More = styled.button`
   cursor: pointer;
 `;
 
-const UsersContainer = styled.div<{ isMore: boolean }>`
+const UsersContainer = styled.div<{ isMore: boolean; length: number }>`
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -104,10 +104,10 @@ const UsersContainer = styled.div<{ isMore: boolean }>`
   height: 100%;
   transition: 0.5s max-height ease;
   overflow: hidden;
-  ${({ isMore }) =>
+  ${({ isMore, length }) =>
     isMore &&
     css`
-      max-height: 15rem;
+      max-height: ${length * 8 - 1}rem;
     `}
 `;
 
@@ -202,7 +202,7 @@ const Most = ({ subTitle, title, mostUsers, users }: MostProps): React.ReactElem
       {users && users.length > 0 && (
         <>
           <More onClick={handleToggleMore}>더보기 {isMore ? "▲" : "▼"} </More>
-          <UsersContainer isMore={isMore}>
+          <UsersContainer isMore={isMore} length={users.length}>
             {users.map(({ id, name }, index) => {
               return (
                 <Cutie key={id}>
