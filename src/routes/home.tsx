@@ -637,10 +637,12 @@ function Home(): React.ReactElement {
                 y: -150,
               }}
             >
-              <Section3Banner
-                src="/images/section_3_banner.png"
-                alt="당신에게 보내는 랜덤 새해 덕담"
-              />
+              <Link to="/events">
+                <Section3Banner
+                  src="/images/section_3_banner.png"
+                  alt="당신에게 보내는 랜덤 새해 덕담"
+                />
+              </Link>
             </ScrollTrigger>
           </Link>
         </Inner>
