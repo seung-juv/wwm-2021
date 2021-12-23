@@ -544,6 +544,7 @@ function Home(): React.ReactElement {
             <Section2Slider>
               {[...Array(30)].map((_, i) => (
                 <ScrollTrigger
+                  key={i}
                   enterFromOptions={{
                     opacity: 0,
                     y: 150,
@@ -562,7 +563,7 @@ function Home(): React.ReactElement {
                     y: -150,
                   }}
                 >
-                  <Section2Slide key={i}>
+                  <Section2Slide>
                     <img src={`/images/profile/${i + 1}.jpg`} alt={`${i + 1}`} />
                   </Section2Slide>
                 </ScrollTrigger>
@@ -618,33 +619,31 @@ function Home(): React.ReactElement {
           >
             <SectionTitle>이벤트</SectionTitle>
           </ScrollTrigger>
-          <Link to="/">
-            <ScrollTrigger
-              enterFromOptions={{
-                opacity: 0,
-                y: 150,
-              }}
-              enterToOptions={{
-                opacity: 1,
-                y: 0,
-              }}
-              leaveFromOptions={{
-                opacity: 1,
-                y: 0,
-              }}
-              leaveToOptions={{
-                opacity: 0,
-                y: -150,
-              }}
-            >
-              <Link to="/events">
-                <Section3Banner
-                  src="/images/section_3_banner.png"
-                  alt="당신에게 보내는 랜덤 새해 덕담"
-                />
-              </Link>
-            </ScrollTrigger>
-          </Link>
+          <ScrollTrigger
+            enterFromOptions={{
+              opacity: 0,
+              y: 150,
+            }}
+            enterToOptions={{
+              opacity: 1,
+              y: 0,
+            }}
+            leaveFromOptions={{
+              opacity: 1,
+              y: 0,
+            }}
+            leaveToOptions={{
+              opacity: 0,
+              y: -150,
+            }}
+          >
+            <Link to="/events">
+              <Section3Banner
+                src="/images/section_3_banner.png"
+                alt="당신에게 보내는 랜덤 새해 덕담"
+              />
+            </Link>
+          </ScrollTrigger>
         </Inner>
       </Section3>
       <Inner>
