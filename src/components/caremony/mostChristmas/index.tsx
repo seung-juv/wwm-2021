@@ -1,10 +1,14 @@
 import React from "react";
-import { User, users } from "../../../commons/data";
-import Most from "../most";
+import { users } from "../../../commons/data";
+import Most, { MostUser } from "../most";
 
-const mostChristmas: Array<User> = [users[7], users[5], users[18]];
+const mostChristmas: Array<MostUser> = [users[7], users[5], users[18]];
 
-const christmas: Array<User> = [users[13], users[6], users[12]];
+const christmas: Array<MostUser> = [
+  { ...users[13], rank: 4 },
+  { ...users[6], rank: 4 },
+  { ...users[12], rank: 4 },
+];
 
 const MostChristmas = (): React.ReactElement => {
   return (

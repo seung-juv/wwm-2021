@@ -15,7 +15,6 @@ import "swiper/css";
 SwiperCore.use([A11y, Mousewheel]);
 
 const Container = styled.main`
-  width: 140rem;
   height: calc(100vh - 10rem);
   margin: 0 auto;
   overflow: hidden;

@@ -3,11 +3,15 @@ import styled from "@emotion/styled";
 import { User } from "../../../commons/data";
 import { css } from "@emotion/react";
 
+export interface MostUser extends User {
+  rank?: number;
+}
+
 export interface MostProps {
   subTitle: string;
   title: string;
-  mostUsers: User[];
-  users?: User[];
+  mostUsers: MostUser[];
+  users?: MostUser[];
 }
 
 const Container = styled.div`
@@ -203,10 +207,10 @@ const Most = ({ subTitle, title, mostUsers, users }: MostProps): React.ReactElem
         <>
           <More onClick={handleToggleMore}>더보기 {isMore ? "▲" : "▼"} </More>
           <UsersContainer isMore={isMore} length={users.length}>
-            {users.map(({ id, name }, index) => {
+            {users.map(({ id, name, rank }, index) => {
               return (
                 <Cutie key={id}>
-                  <CutieRank>{index + 4}</CutieRank>
+                  <CutieRank>{rank ?? index + 4}</CutieRank>
                   <CutieName>{name.substring(0, 3)}</CutieName>
                 </Cutie>
               );

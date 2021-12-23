@@ -122,7 +122,7 @@ const names: Array<string> = [
   "ちょろ",
   "보영",
   "병욱",
-];
+].sort(() => Math.random() - 0.5);
 
 const comments: Array<string> = [
   "적게 일하고 많이 버세요",
@@ -145,7 +145,7 @@ const comments: Array<string> = [
   "좋은일만 생길거예요",
   "소망하는 일 모두 이루세요",
   "맛있는거 사주세요",
-];
+].sort(() => Math.random() - 0.5);
 
 function Events(): React.ReactElement {
   const [status, setStatus] = React.useState(true);
@@ -207,6 +207,7 @@ function Events(): React.ReactElement {
       handleStopNameInterval();
       handleCommentsInterval();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   React.useEffect(() => {
@@ -215,6 +216,7 @@ function Events(): React.ReactElement {
         setNameIndex(0);
       }, ms / 2);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nameIndex]);
 
   React.useEffect(() => {
@@ -223,6 +225,7 @@ function Events(): React.ReactElement {
         setCommentIndex(0);
       }, ms / 2);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [commentIndex]);
 
   return (
@@ -231,9 +234,12 @@ function Events(): React.ReactElement {
       <Container>
         <TextContainer>
           <Text>
-            올 한해
+            올 한해{" "}
             <NameContainer>
               {_names.map((name, index) => {
+                if (status === false && index !== nameIndex) {
+                  return null;
+                }
                 return (
                   <Name
                     key={index}
@@ -253,6 +259,9 @@ function Events(): React.ReactElement {
             <br />
             <CommentsContainer>
               {_comments.map((comment, index) => {
+                if (status === false && index !== commentIndex) {
+                  return null;
+                }
                 return (
                   <Comments
                     key={index}
